@@ -7,7 +7,7 @@ http:
   shutdown_timeout: 5s
 email:
   topic: "Подтвердите аккаунт"
-  link: "https://easy100.ru/auth/update-user/"
+  link: "http://easy100.ru/auth/update-user/"
 api:
   url: "http://mail-sender:8003/mail/send"
 pg:

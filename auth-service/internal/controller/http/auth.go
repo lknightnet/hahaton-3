@@ -20,9 +20,9 @@ func newAuthController(authUC service.Auth) *authController {
 func NewAuthRoutes(authUC service.Auth, r *mux.Router) {
 	authCtrl := newAuthController(authUC)
 
-	r.HandleFunc("/auth/signup", authCtrl.signup)
-	r.HandleFunc("/auth/login", authCtrl.login)
-	r.HandleFunc("/auth/update-user/{uuid}", authCtrl.updateUser)
+	r.HandleFunc("/auth/signup", authCtrl.signup).Methods(http.MethodPost)
+	r.HandleFunc("/auth/login", authCtrl.login).Methods(http.MethodPost)
+	r.HandleFunc("/auth/update-user/{uuid}", authCtrl.updateUser).Methods(http.MethodGet)
 }
 
 func (a *authController) signup(w http.ResponseWriter, r *http.Request) {
