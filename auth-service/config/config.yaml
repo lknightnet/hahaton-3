@@ -1,0 +1,18 @@
+app:
+  name: "auth-service"
+http:
+  port: 8004
+  read_timeout: 1m
+  write_timeout: 1m
+  shutdown_timeout: 5s
+email:
+  topic: "Подтвердите аккаунт"
+  link: "https://easy100.ru/auth/update-user/"
+api:
+  url: "http://mail-sender:8003/mail/send"
+pg:
+  conn_uri: "postgres://green:0010@postgres:5432/hahaton"
+hash:
+  salt: green
+jwt:
+  signkey: green

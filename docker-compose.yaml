@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres:alpine
+    volumes:
+      - ./postgres/schema/create.sql:/docker-entrypoint-initdb.d/create.sql
+    restart: always
+    env_file:
+      - ./postgres/.env
+    ports:
+      - "5432:5432"
+  auth-service:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    networks:
+      - default
+    ports:
+      - "8004:8004"
+  mail-sender:
+      build:
+        context: ./mail-sender
+        dockerfile: Dockerfile
+      networks:
+        - default
+      ports:
+        - "8003:8003"

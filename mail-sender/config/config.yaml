@@ -1,0 +1,14 @@
+app:
+  name: "email-service"
+http:
+  port: 8003
+  read_timeout: 1m
+  write_timeout: 1m
+  shutdown_timeout: 5s
+html:
+  path: "storage/"
+mail:
+  from: bibadevelopment@gmail.com
+  password: matb gcbx ivun kdyg
+  host: smtp.gmail.com
+  port: 587
