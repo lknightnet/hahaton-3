@@ -70,11 +70,12 @@ func (a *AuthRepository) UpdateStatusUser(ctx context.Context, uuid string) erro
 		Set("status", true).
 		Where(squirrel.Eq{"uuid": uuid}).
 		ToSql()
+
 	if err != nil {
 		return fmt.Errorf("repository/auth/UpdateStatusUser: fail to create sql query: %s", err.Error())
 	}
 
-	_, err = a.db.Pool.Exec(ctx, sql, args)
+	_, err = a.db.Pool.Exec(ctx, sql, args...)
 	if err != nil {
 		return fmt.Errorf("repository/auth/UpdateStatusUser: fail to update user in database: %s", err.Error())
 	}
