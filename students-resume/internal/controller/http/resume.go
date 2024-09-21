@@ -20,8 +20,8 @@ func newResumeController(studentUC service.Resume) *resumeController {
 func NewResumeRoutes(studentUC service.Resume, r *mux.Router) {
 	studentCtrl := newResumeController(studentUC)
 
-	r.HandleFunc("/student/get/{id:[0-9]+}", studentCtrl.createResume).Methods(http.MethodGet)
-	r.HandleFunc("/student/create", studentCtrl.getResume).Methods(http.MethodPost)
+	r.HandleFunc("/student/get/{id:[0-9]+}", studentCtrl.getResume).Methods(http.MethodGet)
+	r.HandleFunc("/student/create", studentCtrl.createResume).Methods(http.MethodPost)
 }
 
 func (a *resumeController) createResume(w http.ResponseWriter, r *http.Request) {

@@ -20,8 +20,8 @@ func newStudentController(studentUC service.Student) *studentController {
 func NewStudentRoutes(studentUC service.Student, r *mux.Router) {
 	studentCtrl := newStudentController(studentUC)
 
-	r.HandleFunc("/student/get/{id:[0-9]+}", studentCtrl.createStudent).Methods(http.MethodGet)
-	r.HandleFunc("/student/create", studentCtrl.getStudent).Methods(http.MethodPost)
+	r.HandleFunc("/student/create", studentCtrl.createStudent).Methods(http.MethodPost)
+	r.HandleFunc("/student/get/{id:[0-9]+}", studentCtrl.getStudent).Methods(http.MethodGet)
 }
 
 func (a *studentController) createStudent(w http.ResponseWriter, r *http.Request) {
