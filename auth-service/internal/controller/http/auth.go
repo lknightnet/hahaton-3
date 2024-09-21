@@ -80,7 +80,7 @@ func (a *authController) updateUser(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-
+	log.Println(vars["uuid"])
 	err = a.authUC.UpdateStatusUser(r.Context(), vars["uuid"])
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
