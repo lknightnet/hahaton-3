@@ -22,7 +22,7 @@ func NewAuthRoutes(authUC service.Auth, r *mux.Router) {
 
 	r.HandleFunc("/auth/signup", authCtrl.signup)
 	r.HandleFunc("/auth/login", authCtrl.login)
-	r.HandleFunc("/auth/update-user", authCtrl.updateUser)
+	r.HandleFunc("/auth/update-user/{uuid}", authCtrl.updateUser)
 }
 
 func (a *authController) signup(w http.ResponseWriter, r *http.Request) {
