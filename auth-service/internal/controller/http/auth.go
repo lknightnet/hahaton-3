@@ -72,16 +72,9 @@ func (a *authController) login(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *authController) updateUser(w http.ResponseWriter, r *http.Request) {
-	var body model.User
 	vars := mux.Vars(r)
-
-	err := json.NewDecoder(r.Body).Decode(&body)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
 	log.Println(vars["uuid"])
-	err = a.authUC.UpdateStatusUser(r.Context(), vars["uuid"])
+	err := a.authUC.UpdateStatusUser(r.Context(), vars["uuid"])
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
