@@ -4,7 +4,6 @@ import (
 	"email-service/internal/model"
 	"email-service/internal/service"
 	"encoding/json"
-	"log"
 	"net/http"
 )
 
@@ -24,7 +23,6 @@ func (mc *mailController) postSendMail(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Invalid request payload", http.StatusBadRequest)
 		return
 	}
-	log.Println(mail)
 
 	err = mc.mail.SendMail(mail)
 	if err != nil {
