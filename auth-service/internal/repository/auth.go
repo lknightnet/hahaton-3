@@ -43,7 +43,7 @@ func (a *AuthRepository) CreateUser(ctx context.Context, user *model.User) (*mod
 }
 
 func (a *AuthRepository) GetUser(ctx context.Context, password, email string) (*model.User, error) {
-	sql, args, err := a.db.Builder.Select("id", "name", "email", "password", "status", "uuid", "type_user", "created_at", "updated_at").
+	sql, args, err := a.db.Builder.Select("id", "name", "email", "password", "status", "uuid", "type_user", "createdat", "updatedat").
 		From("users").
 		Where(squirrel.Eq{"email": email, "password": password}).
 		ToSql()
