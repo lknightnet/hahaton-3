@@ -32,7 +32,7 @@ func (t *TokenRepository) AddToken(ctx context.Context, token *model.Token) (*mo
 				return nil, ErrAlreadyExists
 			}
 		}
-		return nil, fmt.Errorf("repository/token/AddToken: fail to create user in database: %s", err.Error())
+		return nil, fmt.Errorf("repository/token/AddToken: fail to create token in database: %s", err.Error())
 	}
 	return token, nil
 }

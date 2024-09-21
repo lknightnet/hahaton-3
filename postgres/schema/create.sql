@@ -14,5 +14,5 @@ CREATE TABLE users
 CREATE TABLE tokens
 (
     user_id int          NOT NULL,
-    token   VARCHAR(500) NOT NULL UNIQUE
+    token   VARCHAR(1500) NOT NULL UNIQUE
 );
