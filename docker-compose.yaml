@@ -27,3 +27,11 @@ services:
         - default
       ports:
         - "8003:8003"
+  student-resume:
+    build:
+      context: ./students-resume
+      dockerfile: Dockerfile
+    networks:
+      - default
+    ports:
+      - "8005:8005"
