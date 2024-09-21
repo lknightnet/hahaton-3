@@ -49,7 +49,7 @@ func (a *AuthRepository) GetUser(ctx context.Context, password, email string) (*
 		ToSql()
 
 	var user model.User
-	err = a.db.Pool.QueryRow(ctx, sql, args...).Scan(&user.Name, &user.Email, &user.Password, &user.CreatedAt, &user.UpdatedAt, &user.Status, &user.TypeUser, &user.ID)
+	err = a.db.Pool.QueryRow(ctx, sql, args...).Scan(&user.Name, &user.Email, &user.Password, &user.Status, &user.UUID, &user.TypeUser, &user.CreatedAt, &user.UpdatedAt)
 	if err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
 			return nil, ErrNotFound
