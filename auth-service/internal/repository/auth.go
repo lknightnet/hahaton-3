@@ -43,13 +43,13 @@ func (a *AuthRepository) CreateUser(ctx context.Context, user *model.User) (*mod
 }
 
 func (a *AuthRepository) GetUser(ctx context.Context, password, email string) (*model.User, error) {
-	sql, args, err := a.db.Builder.Select("*").
+	sql, args, err := a.db.Builder.Select("id", "name", "email", "password", "status", "uuid", "type_user", "created_at", "updated_at").
 		From("users").
 		Where(squirrel.Eq{"email": email, "password": password}).
 		ToSql()
 
 	var user model.User
-	err = a.db.Pool.QueryRow(ctx, sql, args...).Scan(&user.Name, &user.Email, &user.Password, &user.Status, &user.UUID, &user.TypeUser, &user.CreatedAt, &user.UpdatedAt)
+	err = a.db.Pool.QueryRow(ctx, sql, args...).Scan(&user.ID, &user.Name, &user.Email, &user.Password, &user.Status, &user.UUID, &user.TypeUser, &user.CreatedAt, &user.UpdatedAt)
 	if err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
 			return nil, ErrNotFound
