@@ -16,6 +16,7 @@ type mailService struct {
 
 func (ms *mailService) SendMail(m model.Mail) error {
 	msg := m.NewMessage(m.Topic, m.Message)
+	log.Println(m)
 	err := smtp.SendMail(ms.SmtpHost+":"+ms.SmtpPort, ms.Auth, ms.From, m.To, msg)
 	if err != nil {
 		log.Println("service.SendMail: " + err.Error())
